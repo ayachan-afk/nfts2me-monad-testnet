@@ -1,0 +1,5 @@
+{
+  "name": "NFTS2Me Mint Tracker",
+  "description": "A web application to track real-time mints of NFTs created using the NFTS2ME platform on the Monad Testnet.",
+  "requestFramePermissions": []
+}
