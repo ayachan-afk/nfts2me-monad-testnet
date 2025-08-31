@@ -438,7 +438,7 @@ export default function App() {
                             src={`https://${modalContract.toLowerCase()}_${CHAIN_ID}.nfts2.me/?widget=classic&hideBanner=true`}
                             style={{ height: '515px', width: '100%', border: 'none', borderRadius: '0 0 1rem 1rem' }}
                             title="NFT Widget"
-                            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
+                            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-modals allow-forms allow-top-navigation-by-user-activation"
                         ></iframe>
                     </div>
                 </div>
