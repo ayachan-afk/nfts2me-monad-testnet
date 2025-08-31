@@ -24,7 +24,6 @@ export default function App() {
   const [mints, setMints] = useState<MintItem[]>([]);
   const [summaries, setSummaries] = useState<Record<string, CollSummary>>({});
   const metaCache = useRef<Map<string, ContractMeta>>(new Map());
-  const [modalContract, setModalContract] = useState<string | null>(null);
 
   // Init providers
   useEffect(() => {
@@ -300,7 +299,8 @@ export default function App() {
   
   const handleRowClick = (item: MintItem) => {
     if (item.type === TokenType.ERC721 || item.type === TokenType.ERC1155) {
-        setModalContract(item.contract);
+        const url = `https://${item.contract.toLowerCase()}_${CHAIN_ID}.nfts2.me/?widget=classic&hideBanner=true`;
+        window.open(url, '_blank', 'noopener,noreferrer');
     }
   };
 
@@ -417,33 +417,6 @@ export default function App() {
                 </div>
             </section>
         </div>
-
-        {modalContract && (
-            <div 
-                className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4"
-                onClick={() => setModalContract(null)}
-            >
-                <div className="bg-gray-900 border border-gray-700 rounded-2xl shadow-xl w-full max-w-lg relative" onClick={e => e.stopPropagation()}>
-                    <div className="flex justify-between items-center p-4 border-b border-gray-700">
-                        <h3 className="text-lg font-semibold text-white">NFT Collection</h3>
-                        <button onClick={() => setModalContract(null)} className="text-gray-400 hover:text-white transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div className="p-2">
-                        <iframe
-                            id='iframe-widget'
-                            src={`https://${modalContract.toLowerCase()}_${CHAIN_ID}.nfts2.me/?widget=classic&hideBanner=true`}
-                            style={{ height: '515px', width: '100%', border: 'none', borderRadius: '0 0 1rem 1rem' }}
-                            title="NFT Widget"
-                            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox allow-modals allow-forms allow-top-navigation-by-user-activation"
-                        ></iframe>
-                    </div>
-                </div>
-            </div>
-        )}
 
         <footer className="text-center text-xs text-gray-500 pt-4 border-t border-gray-800">
           <p>
