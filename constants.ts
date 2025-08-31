@@ -2,7 +2,7 @@ import { ethers } from "ethers";
 
 // --- Config: set via Vite env or fallback to provided endpoints ---
 export const WS_URL = (import.meta as any).env?.VITE_WS_MONAD_TESTNET || "wss://testnet-rpc.monad.xyz";
-export const HTTP_URL = (import.meta as any).env?.VITE_HTTP_MONAD_TESTNET || "https://testnet-rpc.monad.xyz";
+export const HTTP_URL = (import.meta as any).env?.VITE_HTTP_MONAD_TESTNET || "https://cosmological-tame-resonance.monad-testnet.quiknode.pro/84ed94f365bde58e2b51be6d0f1c8fa3a8e0a932/";
 
 // --- Network Constants ---
 export const CHAIN_ID = 10143; // Monad Testnet
