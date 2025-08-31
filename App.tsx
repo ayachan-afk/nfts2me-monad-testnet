@@ -1,3 +1,4 @@
+
 import React, { useEffect, useMemo, useRef, useState, useCallback } from "react";
 import { ethers, Log } from "ethers";
 import { TokenType, MintItem, CollSummary, ContractMeta } from './types';
@@ -226,7 +227,7 @@ export default function App() {
         arr.forEach((it) => (it.timestamp = ts));
       }
       
-      setMints(prev => [...prev, ...newItems].sort((a,b) => b.blockNumber - a.blockNumber || b.logIndex - a.logIndex));
+      setMints(prev => [...newItems, ...prev].sort((a,b) => b.blockNumber - a.blockNumber || b.logIndex - a.logIndex));
 
   }, [upsertSummary, enrichCollection, fetchTimestamp]);
   
@@ -308,8 +309,8 @@ export default function App() {
       <div className="max-w-7xl mx-auto space-y-8">
         <header className="flex items-center justify-between gap-4">
             <div className="flex items-center">
-                <img src="https://app.nfts2me.com/assets/images/logo.svg" alt="NFTS2Me Logo" className="h-8 w-8 sm:h-10 sm:w-10 mr-3" />
-                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">NFTS2ME Mint Tracker</h1>
+                <img src="./logo.svg" alt="NFTS2Me Logo" className="h-8 w-8 sm:h-10 sm:w-10 mr-3" />
+                <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">NFTS2Me Mint Tracker</h1>
             </div>
         </header>
 
@@ -437,7 +438,7 @@ export default function App() {
                             src={`https://${modalContract.toLowerCase()}_${CHAIN_ID}.nfts2.me/?widget=classic&hideBanner=true`}
                             style={{ height: '515px', width: '100%', border: 'none', borderRadius: '0 0 1rem 1rem' }}
                             title="NFT Widget"
-                            sandbox="allow-scripts allow-same-origin"
+                            sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
                         ></iframe>
                     </div>
                 </div>
